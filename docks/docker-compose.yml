@@ -1,0 +1,27 @@
+services:
+  armbuild:
+    build: ./armbuild
+    image: docks/armbuild
+    container_name: docks-armbuild
+    working_dir: /workspace
+    privileged: true
+    security_opt:
+      - seccomp:unconfined
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - SYS_MODULE
+      - SYS_PTRACE
+  64build:
+    build: ./64build
+    image: docks/64build
+    container_name: docks-64build
+    working_dir: /workspace
+    privileged: true
+    security_opt:
+      - seccomp:unconfined
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - SYS_MODULE
+      - SYS_PTRACE
