@@ -1,9 +1,4 @@
 "
-" polyglot
-"
-"let g:polyglot_disabled = ['sensible']
-
-"
 " Vundle
 " 
 set nocompatible              " be iMproved, required
@@ -19,7 +14,6 @@ Plugin 'thaerkh/vim-workspace'
 Plugin 'valloric/youcompleteme'
 Plugin 'scrooloose/syntastic'
 Plugin 'tinted-theming/base16-vim'
-Plugin 'sheerun/vim-polyglot'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
