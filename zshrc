@@ -1,8 +1,6 @@
 ## path variables
 PATH_CONFIG=$HOME/.config
 PATH="$HOME/.local/bin:$PATH"
-eval "$(/opt/homebrew/bin/brew shellenv)"
-FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 setopt menu_complete
 
 ## OhMyZsh
@@ -23,13 +21,20 @@ alias ll='l -a'
 alias -s {c,h,md,conf}=vim
 alias -g L='| less'
 alias rm="trash"
+alias svi="sudo vim"
+  
+## sudo
+alias pacman="sudo pacman"
+alias systemctl="sudo systemctl"
+alias ufw="sudo ufw"
+alias qmk="sudo qmk"
 
 ## Functions
 cd() { builtin cd "$@"; l; }
 update() {
   # package upgrade&clean
-  brew update
-  brew upgrade
+  pacman --noconfirm -Syu
+  pacman --noconfirm -Qdtq | ifne sudo pacman -Rns -
 
   vim -E +PluginUpdate +qall
 
@@ -38,9 +43,6 @@ update() {
   python3 ~/.vim/bundle/youcompleteme/install.py --clangd-completer --ts-completer --quiet
 
   omz update
-
-  command rm -f ~/.zcompdump
-  compinit
 }
 
 ghfetch() {
@@ -66,9 +68,7 @@ keebuild() {
   command rm -rf $KEYMAP_PATH
   git pull
   command cp -a $PATH_CONFIG/keymap $KEYMAP_PATH
-  venv qmk
   qmk flash -kb keyboardio/atreus -km hazeleet
-  deactivate
   popd
 }
 
