@@ -1,4 +1,5 @@
 nextjs-nodejs
-tinted-theming
-venv
-yay
+/tinted-theming
+/venv
+/yay
+/go
