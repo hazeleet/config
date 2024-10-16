@@ -153,10 +153,10 @@ endfunction
 syntax on
 autocmd FileType * setlocal ts=2 sts=2 sw=2 expandtab smartindent cindent
 autocmd FileType markdown setlocal spell spelllang=en,cjk
-autocmd FileType c set noexpandtab cc=80
-autocmd FileType make set noexpandtab cc=80
-autocmd BufRead,BufNewFIle *.S set filetype=asm
-autocmd BufRead,BufNewFIle *.s set filetype=asm
+autocmd FileType c setlocal noexpandtab cc=80
+autocmd FileType make setlocal noexpandtab cc=80
+autocmd BufRead,BufNewFIle *.S setlocal filetype=asm
+autocmd BufRead,BufNewFIle *.s setlocal filetype=asm
 set wildmode=list:longest,full
 set backspace=indent,eol,start
 set hlsearch
